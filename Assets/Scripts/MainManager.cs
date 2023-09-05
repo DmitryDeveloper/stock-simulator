@@ -8,7 +8,7 @@ public class MainManager : MonoBehaviour
     //Note the keyword static after the keyword public.
     //This keyword means that the values stored in this class member will be shared by all the instances of that class.
     //(f.e. if we have not singletone then all objects will share this value between each)
-    public static MainManager Instance;
+    public static MainManager Instance { get; private set; } //accessable from another classes but restricted to be set
 
     public Color TeamColor; //will pass color between scenes
 
