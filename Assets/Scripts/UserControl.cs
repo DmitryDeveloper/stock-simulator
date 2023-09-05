@@ -20,6 +20,7 @@ public class UserControl : MonoBehaviour
         Marker.SetActive(false);
     }
 
+    // if we click on User or Transport then assign it on m_Selected var
     public void HandleSelection()
     {
         var ray = GameCamera.ScreenPointToRay(Input.mousePosition);
@@ -39,7 +40,7 @@ public class UserControl : MonoBehaviour
         }
     }
 
-    public void HandleAction ()
+    public void HandleAction()
     {
         var ray = GameCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -50,6 +51,7 @@ public class UserControl : MonoBehaviour
             
             if (building != null)
             {
+                //pass cordinats to this method
                 m_Selected.GoTo(building);
             } else {
                 m_Selected.GoTo(hit.point);
@@ -62,6 +64,7 @@ public class UserControl : MonoBehaviour
         Vector2 move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         GameCamera.transform.position = GameCamera.transform.position + new Vector3(move.y, 0, -move.x) * PanSpeed * Time.deltaTime;
 
+        //left click
         if (Input.GetMouseButtonDown(0))
         {
             HandleSelection();
